@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ad.css' %}">
+    <style>
+        .button1-hide{
+            display: none;
+        }
+        .button2-hide{
+            display: none;
+        }
+    </style>
+
+    <script type='text/javascript' src='{{popunder}}'></script>
+</head>
+<body>
+    <h1 class="home">AdShare</h1>
+    <h1>Please wait <span id="countdown"> 10 </span> seconds...</h1>
+
+    <button id="button1" class="button1-hide"><a href="{{direct_link}}" target="_blank" onclick="showButton1()">AD</a></button>
+    <button id="button2" class="button2-hide"><a href="/{{user}}/{{claim_char}}/claim/">Claim</a></button>
+
+    <script>
+        var countdown = 10;
+        var intervalId = setInterval(function() {
+            countdown--;
+            document.getElementById("countdown").textContent = countdown;
+
+            if (countdown === 0) {
+                clearInterval(intervalId);
+                document.querySelector(".button1-hide").style.display = "block";
+            }
+
+        }, 1000);
+
+        function showButton1() {
+            document.querySelector(".button2-hide").style.display = "block";
+        }
+    </script>
+
+    <script async="async" data-cfasync="false" src="{{nb_s}}"></script>
+    <div id="{{nb_d}}"></div>
+
+    
+    <script type='text/javascript' src='{{social_bar}}'></script>
+</body>
+</html>

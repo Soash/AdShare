@@ -1,0 +1,48 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #333;
+}
+
+#countdown {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff5733; /* You can choose your own countdown color */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+.button1-hide a,
+.button2-hide a {
+    text-decoration: none;
+    color: #fff;
+} 
+
+#button1 {
+    background-color: #4CAF50; /* You can choose your own button color */
+    border: none;
+    color: white;
+}
+
+#button2 {
+    background-color: #337ab7; /* You can choose your own button color */
+    border: none;
+    color: white;
+}

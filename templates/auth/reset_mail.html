@@ -1,0 +1,9 @@
+{% autoescape off %}
+
+ Welcome to AdShare
+ Hello {{ name }}!!
+ Please reset your password by clicking on the following link.
+
+ Reset Link: http://{{ domain }}{% url 'reset' uidb64=uid token=token %} 
+
+ {% endautoescape %}

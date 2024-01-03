@@ -1,0 +1,12 @@
+body {
+  text-align: center;
+}
+
+div {
+  margin: 25px;
+}
+
+
+div a:hover {
+  text-decoration: underline;
+}
