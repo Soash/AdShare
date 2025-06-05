@@ -4,4 +4,4 @@
 
 Users engage with links that display **Adsterra** ads, and revenue is generated directly from user interactions with those ads. The more active the community, the more income is earned and shared among users.
 
-🌐 **Live Demo**: [adshare.soash.xyz](https://adshare.soash.xyz/)
+🌐 **Live Demo**: [adshare247.soash.xyz](https://adshare247.soash.xyz/)
