@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'signup.css' %}">
+
+    <style>
+        div {
+            text-align: center;
+            padding: 15px;
+        }
+        div a{
+            margin: 0px 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h1 class="home"><a href="/">AdShare</a></h1>
+
+    <h1>Dashboard of {{ request.user.username }}</h1>
+    <div>
+        <a href="{% url 'post' %}">Post</a>
+        <a href="{% url 'earn' %}">Earn</a>
+    </div>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        <strong>Message:</strong> {{ message }}
+    </div>
+    {% endfor %}
+
+
+    {% if scripts %}
+
+        {% for script in scripts %}
+
+        <h1>Coin: {{ script.coin }} &#10022; Token: {{ token }}</h1>
+        <form action="{% url 'save' %}" method="post"> {% csrf_token %}
+            <label for="textarea1">Popunder</label>
+            <textarea id="textarea1" name="textarea1" required>{{ script.textarea1 }}</textarea>
+
+            <label for="textarea2">Direct Link</label>
+            <textarea id="textarea2" name="textarea2" required>{{ script.textarea2 }}</textarea>
+
+            <label for="textarea3">Native Banner</label>
+            <textarea id="textarea3" name="textarea3" required>{{ script.textarea3 }}</textarea>
+
+            <label for="textarea4">Social Bar</label>
+            <textarea id="textarea4" name="textarea4" required>{{ script.textarea4 }}</textarea>
+
+            <button type="submit">Save</button>
+        </form>
+
+        {% endfor %}
+
+        {% else %}
+
+        <h1>Coin: &#129689; &#10022; Token: &#128181;</h1>
+        <form action="{% url 'save' %}" method="post"> {% csrf_token %}
+            <label for="textarea1">Popunder</label>
+            <textarea id="textarea1" name="textarea1" required></textarea>
+
+            <label for="textarea2">Direct Link</label>
+            <textarea id="textarea2" name="textarea2" required></textarea>
+
+            <label for="textarea3">Native Banner</label>
+            <textarea id="textarea3" name="textarea3" required></textarea>
+
+            <label for="textarea4">Social Bar</label>
+            <textarea id="textarea4" name="textarea4" required></textarea>
+
+            <button type="submit">Save</button>
+        </form>
+
+    {% endif %}
+    
+    
+
+    <footer>
+        <span>&copy; 2024 | <a href="#">Soash</a></span>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+
+    <script>
+      // Function to check if the visitor is not from the US
+      function checkVisitor() {
+        // Using ipinfo.io to get information about the visitor's IP address
+        fetch('https://ipinfo.io/json')
+          .then(response => response.json())
+          .then(data => {
+            // Assuming US for demonstration purposes, you can replace it with the actual country code you want to allow
+            var allowedCountryCode = 'US';
+  
+            if (data.country !== allowedCountryCode) {
+              alert('You are not from the US. Use a VPN.');
+              // You may redirect the user to another page or take other actions here
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching IP information:', error);
+          });
+      }
+    </script>
+</head>
+<body onload="checkVisitor()">
+
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+          <strong>Message:</strong> {{ message }}
+      </div>
+    {% endfor %}
+
+    <h1 class="home"><a href="/">AdShare</a></h1>
+
+    <h1>Hello {{request.user.username}}!</h1>
+
+    {% if user.is_authenticated %}
+
+      <div>
+        <a href="{% url 'profile' %}">Profile</a>
+        <a href="{% url 'signout' %}">Sign Out</a>
+      </div>
+
+    {% else %}
+
+    <div>
+      <a href="{% url 'signup' %}">Sign Up</a>
+      <a href="{% url 'signin' %}">Sign In</a>
+    </div>
+
+    {% endif %}
+
+    <footer>
+      <span>&copy; 2024 | <a href="#">Soash</a></span>
+    </footer>
+
+
+
+</body>
+</html>
+
+

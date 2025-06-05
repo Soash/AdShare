@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Earn Page</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'common.css' %}" />
+
+    <style>
+      table {
+        border: 1px solid #ddd;
+        padding: 5px;
+        width: 50%;
+        margin: 0 auto;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+        text-align: center;
+      }
+      tr:nth-child(even) {
+        background-color: #ddd;
+      }
+      th {
+        background-color: #04aa6d;
+        color: white;
+      }
+      td a {
+        text-decoration: none;
+      }
+      p {
+        text-align: center;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <h1 class="home"><a href="/">AdShare</a></h1>
+
+    <h1>Coin: {{ coin }} &#10022; Token: {{ token }}</h1>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    
+    {% if posted_urls %}
+    <table>
+      <thead>
+        <tr>
+          <th>Earn</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in posted_urls %}
+        <tr>
+          <td>
+            <a href="{{base_url}}{{x.user}}/{{x.post_char}}/ad/">Coin &#129689;</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% else %}
+    <p>Nothing to earn now. Please come back later. &#128577;</p>
+    {% endif %}
+
+    <footer>
+      <span>&copy; 2024 | <a href="#">Soash</a></span>
+    </footer>
+  </body>
+</html>

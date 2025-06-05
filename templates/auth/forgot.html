@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'signup.css' %}">
+
+</head>
+<body>
+
+    <h1>Reset Password</h1>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        <strong>Message:</strong> {{ message }}
+    </div>
+    {% endfor %}
+
+    <form method="post" action="{% url 'forgot' %}"> {% csrf_token %}
+    
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="xyz@gmail.com" pattern="[a-zA-Z0-9.]+@gmail\.com" Required>
+   
+        <button type="submit">Send Mail</button>
+        
+    </form>
+
+</body>
+</html>

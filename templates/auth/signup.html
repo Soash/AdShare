@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'signup.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+
+    <h1 class="home"><a href="/">AdShare</a></h1>
+    <h1>Sign Up</h1>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        <strong>Message:</strong> {{ message }}
+    </div>
+    {% endfor %}
+    
+    <form method="POST" action="{% url 'signup' %}" id="signupForm"> {% csrf_token %}
+
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="Enter Your Username" Required>
+
+        <label for="fname">Name</label>
+        <input type="text" name="fname" placeholder="Enter Your Name" Required>
+
+        <label for="email">Email (gmail only)</label>
+        <input type="email" name="email" placeholder="xyz@gmail.com" pattern="[a-zA-Z0-9.]+@gmail\.com" Required>
+
+        <label for="pass1">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Create Your Password" Required>
+        <span toggle="#pass1" class="bi bi-eye-slash toggle-icon toggle-password"></span>
+
+        <label for="pass2">Confirm Password</label>
+        <input type="password" id="pass2" name="pass2" placeholder="Confirm Your Password" Required>
+        <span toggle="#pass2" class="bi bi-eye-slash toggle-icon toggle-password"></span>
+
+        <button type="submit" id="signupButton">Sign Up</button>
+
+    </form>
+
+    <footer><span>&copy; 2024 | </span> <span><a href="#">Soash</a></span></footer>
+
+    <script>
+        $(document).ready(function() {
+          $(".toggle-password").click(function() {
+            $(this).toggleClass("bi-eye bi-eye-slash");
+
+            var input = $($(this).attr("toggle"));
+        
+            input.attr("type", input.attr("type") === "password" ? "text" : "password");
+          });
+        }); 
+    </script>
+    <script>
+        document.getElementById('signupForm').addEventListener('input', function () {
+            var password = document.getElementById('pass1').value;
+            var confirmPassword = document.getElementById('pass2').value;
+            var signupButton = document.getElementById('signupButton');
+    
+            if (password === confirmPassword) {
+                signupButton.disabled = false;
+            } else {
+                signupButton.disabled = true;
+            }
+        });
+    </script>
+
+</body>
+</html>
