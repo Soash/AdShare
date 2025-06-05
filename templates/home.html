@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'common.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
 
-    <script>
+    {% comment %} <script>
       // Function to check if the visitor is not from the US
       function checkVisitor() {
         // Using ipinfo.io to get information about the visitor's IP address
@@ -28,7 +28,8 @@
             console.error('Error fetching IP information:', error);
           });
       }
-    </script>
+    </script> {% endcomment %}
+
 </head>
 <body onload="checkVisitor()">
 
@@ -59,7 +60,7 @@
     {% endif %}
 
     <footer>
-      <span>&copy; 2024 | <a href="#">Soash</a></span>
+      <span>&copy; 2024 | <a href="#">AdShare</a></span>
     </footer>
 
 
